@@ -1,6 +1,5 @@
 {% extends "base.html" %} {% block title %} <br />
 {% endblock title %} {% block content %}
-
 <h2>{{console}} Games:</h2>
 
 {% for game in game_list %}
@@ -9,4 +8,11 @@
   <h3><a href="/game-detail/{{game.game_id}}">{{game.game_name}}</a></h3>
 </div>
 
-{% endfor %} {% endblock %}
+{% endfor %} {% if prev_page %}
+<p>
+  <a href="/console-games/{{console_slug}}/page-{{prev_page}}">previous</a> ||
+  <a href="/console-games/{{console_slug}}/page-{{page}}">next</a>
+</p>
+{% else %}
+<p><a href="/console-games/{{console_slug}}/page-{{page}}">next</a></p>
+{% endif %} {% endblock %}

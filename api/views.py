@@ -17,6 +17,7 @@ def console_detail_view(request, id):
     data = json.loads(response.text)
     console_name = data['name']
     console_slug = data['slug']
+    
     console_img = data['image_background']
     # img_thumbnail_size = console_img.resize(250, 300)
     new_height = 250

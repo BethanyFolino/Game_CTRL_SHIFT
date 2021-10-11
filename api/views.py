@@ -1,6 +1,7 @@
 from django.shortcuts import render
 import requests
 import json
+from PIL import Image
 # Create your views here.
 
 
@@ -17,6 +18,13 @@ def console_detail_view(request, id):
     console_name = data['name']
     console_slug = data['slug']
     console_img = data['image_background']
+    # img_thumbnail_size = console_img.resize(250, 300)
+    new_height = 250
+    new_weidth = int(new_height / console_img.height * console_img.width)
+    new_size = console_img.resize((new_weidth, new_height))
+    print(new_weidth)
+    # image = image.resize(size, Image.ANTIALIAS)
+
     console_desc = data['description']
     games_count = data['games_count']
     data = json.dumps(data, indent=2)
